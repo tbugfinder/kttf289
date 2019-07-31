@@ -1,9 +1,12 @@
-#  Local .terraform directories
-**/.terraform/*
-
-# .tfstate files
-*.tfstate
-*.tfstate.*
-
-# .tfvars files
-*.tfvars
+.bundle
+.kitchen
+.terraform
+.terraform-data.json
+.vscode
+*.auto.tfvars*
+inspec.json
+inspec.lock
+terraform.tfvars*
+terraform.tfstate*
+tfplan
+vendor

@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+gem 'activesupport'
+gem 'hcl-checker', '1.0.6'
+gem 'inspec'
+gem 'kitchen-terraform', '~> 4.3.0'
+gem 'test-kitchen'

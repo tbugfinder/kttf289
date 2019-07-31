@@ -1,0 +1,23 @@
+driver:
+  name: terraform
+
+provisioner:
+  name: terraform
+
+platforms:
+- name: aws
+
+verifier:
+  name: terraform
+
+suites:
+- name: default
+  driver:
+    root_module_directory: test/fixtures/default
+  verifier:
+    systems:
+    - name: aws
+      backend: aws
+      reporter:
+      - cli
+      - json:test/integration/default/inspec.json

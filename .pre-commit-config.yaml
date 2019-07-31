@@ -1,0 +1,41 @@
+fail_fast: true
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks.git
+  rev: v1.3.0
+  hooks:
+  - id: check-added-large-files
+    args: [--maxkb=5000]
+  - id: check-byte-order-marker
+  - id: check-case-conflict
+  - id: check-json
+  - id: check-merge-conflict
+  - id: check-symlinks
+  - id: check-yaml
+    args: [--allow-multiple-documents]
+  - id: detect-aws-credentials
+    args: [--allow-missing-credentials]
+  - id: detect-private-key
+  - id: mixed-line-ending
+    args: [--fix=lf]
+  - id: pretty-format-json
+    args: [--autofix, --indent=2, --no-ensure-ascii]
+  - id: trailing-whitespace
+
+- repo: https://github.com/getcloudnative/pre-commit-terraform
+  sha: v1.8.1
+  hooks:
+  - id: terraform_fmt
+  - id: terraform_docs
+    args: [--args=--with-aggregate-type-defaults]
+
+- repo: local
+  hooks:
+  - id: test
+    name: make test
+    description: Run integration tests.
+    entry: make test
+    language: system
+    files: (\.tf|\.rb)$
+    verbose: true
+
