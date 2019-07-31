@@ -8,7 +8,7 @@ all: init test
 
 .PHONY: init
 # Initialize project.
-init: install-dev-deps install-test-deps
+init: install-test-deps
 
 .PHONY: test
 ## Run blueprint integration tests.
@@ -16,6 +16,7 @@ test: install-test-deps
 	# Remove any previously created Terraform test artefacts.
 	for dir in .terraform terraform.tfstate.d; do \
 		find test/fixtures -name $$dir -print0 | xargs -0 rm -rf; \
+		sync; \
 	done \
 
 	# See https://github.com/hashicorp/terraform/issues/17655 for TF_WARN_OUTPUT_ERRORS=1.
@@ -25,7 +26,7 @@ test: install-test-deps
 .PHONY: install-ruby-gems
 # Install Ruby gems specified in Gemfile.
 install-ruby-gems:
-	BUNDLE_SILENCE_ROOT_WARNING=true bundle install --path $(GEMS_HOME) --jobs=2
+	BUNDLE_SILENCE_ROOT_WARNING=true bundle install --path $(GEMS_HOME) --jobs=8
 
 .PHONY: install-test-deps
 # Install testing dependencies.
