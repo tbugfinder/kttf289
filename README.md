@@ -4,7 +4,7 @@ Reproduce the issue seen in kitchen-terraform - #289
 Usage:
 `make -f Makefile.test init` &&
 `make -f Makefile.test test`
-##Create Error
+#### Create Error
 - Edit `test/fixture/default/main.tf` and uncomment #breakit
 - `make -f Makefile.test test`
 - Edit `test/fixture/default/main.tf` and comment #breakit
